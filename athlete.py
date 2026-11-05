@@ -40,9 +40,7 @@ class Athlete:
             f"{self.coach_hours:g} hrs/week x £{COACH_RATE:.2f} "
             f"x {WEEKS} weeks"
         )
-        competition_working = (
-            f"{self.competitions} x £{COMP_FEE:.2f}"
-        )
+        competition_working = f"{self.competitions} x £{COMP_FEE:.2f}"
         lines = [
             ("Training", training_working, training_cost(self.plan)),
             (

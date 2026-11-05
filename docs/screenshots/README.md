@@ -27,7 +27,7 @@
 | 19-github-readme.png | The README displayed on GitHub | A2: Source code and documentation | Pending |
 | 20-profiler-output.png | Profiler output | A2: Enhancing the algorithm (performance) | Superseded by 20a-b |
 | 20a-profiler-before.png | Profiler output before the optimisation | A2: Enhancing the algorithm (performance) | Captured |
-| 20b-profiler-after.png.png | Profiler output after the optimisation | A2: Enhancing the algorithm (performance) | Captured |
+| 20b-profiler-after.png | Profiler output after the optimisation | A2: Enhancing the algorithm (performance) | Captured |
 | 21-lint-clean.png | Linter (flake8) reporting no problems | A2: Coding standards / A4: Coding standards | Pending |
 | 21a-lint-before.png | black reporting files to reformat (before formatting) | A2: Coding standards / A4: Coding standards | Captured |
 | 22-github-release.png | The GitHub release page | A2: Final submission | Pending |

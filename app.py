@@ -63,9 +63,7 @@ class FeeApp:
         form.grid(row=0, column=0, sticky="w")
 
         self.name_entry = self.add_entry(form, "Name", 0)
-        self.plan_combo = self.add_combo(
-            form, "Plan", 1, list(WEEKLY_FEES)
-        )
+        self.plan_combo = self.add_combo(form, "Plan", 1, list(WEEKLY_FEES))
         self.plan_combo.bind("<<ComboboxSelected>>", self.on_plan_selected)
         self.weight_entry = self.add_entry(form, "Weight (kg)", 2)
         self.category_combo = self.add_combo(
@@ -74,9 +72,7 @@ class FeeApp:
         self.competitions_entry = self.add_entry(
             form, "Competitions this month", 4
         )
-        self.hours_entry = self.add_entry(
-            form, "Coaching hours per week", 5
-        )
+        self.hours_entry = self.add_entry(form, "Coaching hours per week", 5)
 
     def add_entry(self, parent: ttk.Frame, label: str, row: int) -> ttk.Entry:
         """Add a label and a text box on one row and return the box."""
@@ -106,12 +102,15 @@ class FeeApp:
         ttk.Button(
             area, text="Calculate and Add Athlete", command=self.on_calculate
         ).grid(row=0, column=0, padx=FORM_PADDING)
-        ttk.Button(
-            area, text="Clear Form", command=self.on_clear
-        ).grid(row=0, column=1, padx=FORM_PADDING)
+        ttk.Button(area, text="Clear Form", command=self.on_clear).grid(
+            row=0, column=1, padx=FORM_PADDING
+        )
 
         self.error_label = tk.Label(
-            self.root, text="", fg=ERROR_COLOUR, wraplength=450,
+            self.root,
+            text="",
+            fg=ERROR_COLOUR,
+            wraplength=450,
             justify="left",
         )
         self.error_label.grid(row=2, column=0, sticky="w", padx=FORM_PADDING)
@@ -119,7 +118,9 @@ class FeeApp:
     def build_results(self) -> None:
         """Create the read-only area that shows the itemised breakdown."""
         self.result_text = tk.Text(
-            self.root, height=RESULT_ROWS, width=RESULT_WIDTH,
+            self.root,
+            height=RESULT_ROWS,
+            width=RESULT_WIDTH,
             state="disabled",
         )
         self.result_text.grid(
@@ -129,7 +130,9 @@ class FeeApp:
     def build_athlete_list(self) -> None:
         """Create the table of athletes added so far."""
         self.tree = ttk.Treeview(
-            self.root, columns=TREE_COLUMNS, show="headings",
+            self.root,
+            columns=TREE_COLUMNS,
+            show="headings",
             height=TREE_ROWS,
         )
         for column in TREE_COLUMNS:

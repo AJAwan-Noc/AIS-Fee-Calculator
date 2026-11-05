@@ -205,21 +205,15 @@ class TestValidateCoachingHours(unittest.TestCase):
 
     def test_valid_hours(self) -> None:
         """A number inside the allowed range is accepted."""
-        self.assertEqual(
-            validation.validate_coaching_hours("2"), (True, 2.0)
-        )
+        self.assertEqual(validation.validate_coaching_hours("2"), (True, 2.0))
 
     def test_zero_hours(self) -> None:
         """Zero hours is the bottom of the range and is accepted."""
-        self.assertEqual(
-            validation.validate_coaching_hours("0"), (True, 0.0)
-        )
+        self.assertEqual(validation.validate_coaching_hours("0"), (True, 0.0))
 
     def test_five_hours_accepted(self) -> None:
         """Five hours is exactly the maximum and is accepted."""
-        self.assertEqual(
-            validation.validate_coaching_hours("5"), (True, 5.0)
-        )
+        self.assertEqual(validation.validate_coaching_hours("5"), (True, 5.0))
 
     def test_five_and_a_half_hours_rejected(self) -> None:
         """5.5 hours is above the maximum."""

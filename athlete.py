@@ -7,7 +7,6 @@ from pricing import (
     WEEKS,
     coaching_cost,
     competition_cost,
-    monthly_total,
     training_cost,
 )
 
@@ -54,8 +53,12 @@ class Athlete:
                 competition_cost(self.competitions),
             ),
         ]
-        total = monthly_total(self.plan, self.coach_hours, self.competitions)
-        return (lines, total)
+        # Add up the costs already worked out above instead of asking
+        # pricing.py to calculate them all a second time.
+        total = 0.0
+        for label, working, cost in lines:
+            total = total + cost
+        return (lines, round(total, 2))
 
 
 class Squad:

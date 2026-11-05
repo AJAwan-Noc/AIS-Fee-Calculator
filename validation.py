@@ -15,6 +15,8 @@ from pricing import (
 )
 
 NAME_EXTRA_CHARACTERS = " -'"
+# Sanity limit, not a client rule: keeps the GUI layout readable.
+MAX_NAME_LENGTH = 50
 
 
 def parse_number(text: str) -> tuple:
@@ -34,6 +36,13 @@ def validate_name(text: str) -> tuple:
     name = text.strip()
     if name == "":
         return (False, "The name cannot be empty. Please enter a name.")
+    if len(name) > MAX_NAME_LENGTH:
+        return (
+            False,
+            "That name is too long. The maximum is "
+            + str(MAX_NAME_LENGTH)
+            + " characters.",
+        )
     for character in name:
         if not character.isalpha() and character not in NAME_EXTRA_CHARACTERS:
             return (

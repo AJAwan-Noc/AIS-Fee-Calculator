@@ -42,7 +42,7 @@ closed.
 1. Clone the repository and move into the folder:
 
    ```
-   git clone <repository-url>
+   git clone https://github.com/AJAwan-Noc/AIS-Fee-Calculator.git
    cd AIS-Fee-Calculator
    ```
 

@@ -4,6 +4,8 @@ WEEKS = 4
 COACH_RATE = 9.50
 COMP_FEE = 22.00
 MAX_COACH_HOURS = 5
+# Sanity limit, not a client rule: the brief sets no maximum.
+MAX_COMPETITIONS = 5
 
 WEEKLY_FEES = {
     "Beginner": 25.00,

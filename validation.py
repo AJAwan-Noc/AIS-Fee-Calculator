@@ -9,6 +9,7 @@ import math
 
 from pricing import (
     MAX_COACH_HOURS,
+    MAX_COMPETITIONS,
     WEEKLY_FEES,
     WEIGHT_CATEGORIES,
 )
@@ -128,6 +129,13 @@ def validate_competitions(plan: str, text: str) -> tuple:
             False,
             "Beginners cannot enter competitions. Only Intermediate and "
             "Elite members can compete, so please enter 0.",
+        )
+    if competitions > MAX_COMPETITIONS:
+        return (
+            False,
+            "That is too many competitions. The maximum is "
+            + str(MAX_COMPETITIONS)
+            + " per month.",
         )
     return (True, competitions)
 

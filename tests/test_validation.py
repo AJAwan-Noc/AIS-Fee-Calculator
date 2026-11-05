@@ -145,6 +145,22 @@ class TestValidateCompetitions(unittest.TestCase):
         self.assertFalse(ok)
         self.assertIn("Only Intermediate and Elite", message)
 
+    def test_five_competitions_accepted(self) -> None:
+        """5 is exactly the sanity maximum and is accepted."""
+        result = validation.validate_competitions("Elite", "5")
+        self.assertEqual(result, (True, 5))
+
+    def test_six_competitions_rejected(self) -> None:
+        """6 is above the sanity maximum and the message names it."""
+        ok, message = validation.validate_competitions("Elite", "6")
+        self.assertFalse(ok)
+        self.assertIn("maximum is 5", message)
+
+    def test_huge_competitions_rejected(self) -> None:
+        """The 99999 case from the edge-case script is now rejected."""
+        ok, message = validation.validate_competitions("Elite", "99999")
+        self.assertFalse(ok)
+
     def test_negative_competitions(self) -> None:
         """A negative number is rejected."""
         ok, message = validation.validate_competitions("Elite", "-3")

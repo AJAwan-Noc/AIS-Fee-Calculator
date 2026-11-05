@@ -28,6 +28,23 @@ class TestValidateName(unittest.TestCase):
         ok, message = validation.validate_name("   ")
         self.assertFalse(ok)
 
+    def test_fifty_character_name_accepted(self) -> None:
+        """A name of exactly 50 characters is accepted."""
+        name = "A" * 50
+        self.assertEqual(validation.validate_name(name), (True, name))
+
+    def test_fifty_one_character_name_rejected(self) -> None:
+        """A 51-character name is rejected and the message names 50."""
+        ok, message = validation.validate_name("A" * 51)
+        self.assertFalse(ok)
+        self.assertIn("maximum is 50", message)
+
+    def test_length_checked_after_stripping(self) -> None:
+        """Surrounding spaces do not count towards the length."""
+        name = "A" * 50
+        result = validation.validate_name("  " + name + "  ")
+        self.assertEqual(result, (True, name))
+
     def test_name_with_digits(self) -> None:
         """Digits are not allowed in a name."""
         ok, message = validation.validate_name("B0b")
